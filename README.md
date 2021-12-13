@@ -19,11 +19,13 @@ Then, you will be able to run the project executing the command:
 
 `npm run dev`
 
-It will launch the electron app by default, so you can get started.
+It will launch the Electron app by default, so you can get started.
+
 Along with the desktop app, you can also run the web version executing
 both commands:
 
 `npm electron`
+
 `npm start`
 
 It will open [http://localhost:3000](http://localhost:3000) (default),
@@ -66,8 +68,8 @@ the `/src` contains all the React codebase:
 
 ## Next steps
 
-* Bug fixing Tutorial Autoplay.
-* Minor UI refinements on Range component.
+* Bug fixing the Tutorial Autoplay.
+* Minor UI refinement.
 * Desktop app deployment with `electron-packager`.
 
 ## License
