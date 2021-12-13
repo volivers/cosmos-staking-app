@@ -26,12 +26,13 @@ const StyledButton = styled.button`
 `;
 
 const Button = ({
+  name,
   onClick,
   isSticky = false,
   children
 }) => {
   return (
-    <StyledButton isSticky={isSticky} onClick={onClick}>
+    <StyledButton isSticky={isSticky} onClick={onClick} id={name}>
       {children}
     </StyledButton>
   );

@@ -15,14 +15,17 @@ const Wrapper = styled.div`
 const Date = styled.span`color: ${({ theme }) => theme.palette.white};`;
 const Amount = styled.span`color: ${({ theme }) => theme.palette.primary};`;
 
-const Transaction = ({ transaction }) => {
+const Transaction = ({
+  transaction,
+  name,
+}) => {
   const {
     date,
     amount
   } = transaction;
 
   return (
-    <Wrapper>
+    <Wrapper id={name}>
       <Date>{date}</Date>
       <Amount>{parseFloat(amount).toFixed(5)} ATOM</Amount>
     </Wrapper>

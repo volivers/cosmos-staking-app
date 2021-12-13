@@ -1,3 +1,4 @@
+import 'intro.js/introjs.css';
 import React from 'react';
 import { GlobalStyle } from './components/GlobalStyle';
 import { ThemeProvider } from 'styled-components';

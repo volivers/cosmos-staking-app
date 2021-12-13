@@ -2,7 +2,7 @@ export const NETWORK_FEE = 0.0001; // ATOM
 export const INTEREST_RATE = 5; // APY
 export const CURRENT_BALANCE = 1000; // ATOM
 
-export const STAKES = [
+export const stakes = [
   {
     label: '25%',
     value: 25,

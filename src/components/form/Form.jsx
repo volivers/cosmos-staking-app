@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import { NETWORK_FEE, INTEREST_RATE } from '../../constants/staking';
 import { calculateYearlyBalance, calculateAmount } from '../../utils/calculations';
-import Button from '../button/Button';
+import { initialSteps, newStep } from '../../constants/tutorial';
+import { Steps } from 'intro.js-react';
 import Input from '../input/Input';
 import Divider from '../divider/Divider';
-import Transaction from '../transaction/Transaction';
 import Range from '../range/Range';
+import Transaction from '../transaction/Transaction';
+import Button from '../button/Button';
 
 const Wrapper = styled.form`
   width: 100%;
@@ -31,6 +33,18 @@ const Form = () => {
   const [amount, setAmount] = useState(initialAmount);
   const [balance, setBalance] = useState(null);
   const [transactions, setTransactions] = useState([]);
+  const [stepsEnabled, setStepsEnabled] = useState(true);
+  const [steps, setSteps] = useState(initialSteps);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (steps.length < [...initialSteps, newStep].length) {
+        setStepsEnabled(false);
+        setSteps(prevState => ([...prevState, newStep]));
+        setStepsEnabled(true);
+      }
+    }, 3000);
+  }, [steps]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -50,8 +64,16 @@ const Form = () => {
 
   return (
     <Wrapper>
+      <Steps
+        enabled={stepsEnabled}
+        steps={steps}
+        initialStep={steps.length - 1}
+        onExit={() => setStepsEnabled(false)}
+        options={{ showButtons: false, highlightClass: 'highlight' }}
+      />
       <InputGroup>
         <Input
+          name="stake-amount-input"
           label="Enter the amount"
           value={amount}
           onChange={(e) => {
@@ -64,6 +86,7 @@ const Form = () => {
         />
         <Divider />
         <Input
+          name="stake-balance-input"
           label="Balance in 1 year"
           value={balance}
           onChange={(e) => {
@@ -74,13 +97,25 @@ const Form = () => {
           }}
         />
       </InputGroup>
-      <Range setAmount={setAmount} setBalance={setBalance} />
+      <Range
+        name="stake-percentage-switch"
+        setAmount={setAmount}
+        setBalance={setBalance}
+      />
       {!!transactions && (
         transactions.map((transaction, ind) => (
-          <Transaction transaction={transaction} key={ind} />
+          <Transaction
+            name={`stake-transaction-${ind + 1}`}
+            transaction={transaction}
+            key={ind}
+          />
         ))
       )}
-      <Button isSticky={transactions.length > 1} onClick={handleSubmit}>
+      <Button
+        name="stake-button"
+        isSticky={transactions.length > 1}
+        onClick={handleSubmit}
+      >
         Stake ATOM
       </Button>
       <p>Network Fee {NETWORK_FEE.toString()} ATOM</p>

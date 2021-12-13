@@ -37,4 +37,12 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
     margin: 1rem 0;
   }
+  .highlight {
+    background-color: #0c0e0f;
+    border-radius: 50%;
+    border: 1px solid #656b6f;
+  }
+  .introjs-tooltip-header {
+    display: none;
+  }
 `;

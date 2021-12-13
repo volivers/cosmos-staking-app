@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { calculateYearlyBalance } from '../../utils/calculations';
 import {
-  STAKES,
+  stakes,
   INTEREST_RATE,
   CURRENT_BALANCE
 } from '../../constants/staking';
@@ -34,12 +34,13 @@ const RangeItem = styled.span`
 
 const Range = ({
   setAmount,
-  setBalance
+  setBalance,
+  name
 }) => {
   const [active, setActive] = useState('');
   return (
-    <Wrapper>
-      {STAKES.map((stake, ind) => (
+    <Wrapper id={name}>
+      {stakes.map((stake, ind) => (
         <RangeItem
           key={ind}
           active={active === stake.label}

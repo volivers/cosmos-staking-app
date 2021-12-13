@@ -36,6 +36,7 @@ const Input = ({
   value,
   onChange,
   align = 'left',
+  name,
 }) => {
   return (
     <Wrapper>
@@ -47,6 +48,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         align={align}
+        id={name}
       />
     </Wrapper>
 
