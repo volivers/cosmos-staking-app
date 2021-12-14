@@ -1,5 +1,5 @@
 {
-  "name": "exodus-challenge",
+  "name": "cosmos-staking-app",
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
