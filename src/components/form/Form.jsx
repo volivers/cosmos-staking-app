@@ -82,7 +82,6 @@ const Form = () => {
               calculateYearlyBalance(parseFloat(e.target.value), INTEREST_RATE)
             );
           }}
-          align="right"
         />
         <Divider />
         <Input

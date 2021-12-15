@@ -20,7 +20,6 @@ const StyledInput = styled.input`
   color: ${({ theme }) => theme.palette.primary};
   border: none;
   font-size: 56px;
-  text-align: ${({ align }) => align};
 
   &::-webkit-outer-spin-button,
   ::-webkit-inner-spin-button {
@@ -35,7 +34,6 @@ const Input = ({
   label,
   value,
   onChange,
-  align = 'left',
   name,
 }) => {
   return (
@@ -47,7 +45,6 @@ const Input = ({
         min="0"
         value={value}
         onChange={onChange}
-        align={align}
         id={name}
       />
     </Wrapper>
