@@ -66,11 +66,10 @@ the `/src` contains all the React codebase:
 
 ```
 
-## Next steps
+## Contributing
 
-* Bug fixing the Tutorial Autoplay.
-* Minor UI refinement.
-* Desktop app deployment with `electron-packager`.
+Pull requests are welcome. For major changes, open an issue first to discuss what you would like to change.
+Please make sure to include or update tests as appropriate.
 
 ## License
 
