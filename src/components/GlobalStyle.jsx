@@ -39,10 +39,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   .highlight {
     background-color: #0c0e0f;
-    border-radius: 50%;
     border: 1px solid #656b6f;
-  }
-  .introjs-tooltip-header {
-    display: none;
   }
 `;

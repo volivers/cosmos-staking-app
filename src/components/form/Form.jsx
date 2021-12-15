@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import { NETWORK_FEE, INTEREST_RATE } from '../../constants/staking';
 import { calculateYearlyBalance, calculateAmount } from '../../utils/calculations';
-import { initialSteps, newStep } from '../../constants/tutorial';
+import { initialSteps } from '../../constants/tutorial';
 import { Steps } from 'intro.js-react';
 import Input from '../input/Input';
 import Divider from '../divider/Divider';
@@ -34,17 +34,6 @@ const Form = () => {
   const [balance, setBalance] = useState(null);
   const [transactions, setTransactions] = useState([]);
   const [stepsEnabled, setStepsEnabled] = useState(true);
-  const [steps, setSteps] = useState(initialSteps);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (steps.length < [...initialSteps, newStep].length) {
-        setStepsEnabled(false);
-        setSteps(prevState => ([...prevState, newStep]));
-        setStepsEnabled(true);
-      }
-    }, 3000);
-  }, [steps]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -66,10 +55,10 @@ const Form = () => {
     <Wrapper>
       <Steps
         enabled={stepsEnabled}
-        steps={steps}
-        initialStep={steps.length - 1}
+        steps={initialSteps}
+        initialStep={0}
         onExit={() => setStepsEnabled(false)}
-        options={{ showButtons: false, highlightClass: 'highlight' }}
+        options={{ highlightClass: 'highlight' }}
       />
       <InputGroup>
         <Input
